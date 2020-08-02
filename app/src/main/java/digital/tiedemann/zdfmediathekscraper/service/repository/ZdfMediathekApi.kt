@@ -10,11 +10,11 @@ import retrofit2.http.GET
 
 interface ZdfMediathekApi {
 
-    @GET("mediathekV2/start-page")
+    @GET("start-page")
     fun loadStartPage(): Call<StartPageResponse>
 
     companion object {
-        private const val BASE_URL = "https://zdf-cdn.live.cellular.de/"
+        private const val BASE_URL = "https://zdf-cdn.live.cellular.de/mediathekV2/"
         fun create() = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(OkHttpClient())

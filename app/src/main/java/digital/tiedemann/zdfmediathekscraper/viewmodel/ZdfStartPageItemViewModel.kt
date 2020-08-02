@@ -6,10 +6,10 @@ import digital.tiedemann.zdfmediathekscraper.service.repository.Repository
 
 class ZdfStartPageItemViewModel(private val repository: Repository = Repository) : ViewModel() {
     val items = liveData {
-        emitSource(repository.getData())
+        emitSource(repository.getStartPageData())
     }
 
     fun refreshData() {
-        repository.refreshData()
+        repository.refreshStartPageData()
     }
 }

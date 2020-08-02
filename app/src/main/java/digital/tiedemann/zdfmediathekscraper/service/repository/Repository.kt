@@ -15,16 +15,16 @@ object Repository {
         lazy { MutableLiveData<Resource<StartPageResponse>>() }
     private val data: MutableLiveData<Resource<StartPageResponse>> by dataDelegate
 
-    fun getData() =
+    fun getStartPageData() =
         if (dataDelegate.isInitialized()) {
             data.asLiveData()
         } else {
             //in case the data was not initialized before, start fetching now
-            refreshData()
+            refreshStartPageData()
             data.asLiveData()
         }
 
-    fun refreshData() {
+    fun refreshStartPageData() {
         //set value to loading
         data.value = Resource.Loading()
         //load data async and write result(success/error) to data

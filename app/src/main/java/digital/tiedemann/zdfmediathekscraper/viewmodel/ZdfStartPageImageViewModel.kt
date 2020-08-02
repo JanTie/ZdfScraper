@@ -10,7 +10,7 @@ import kotlin.math.abs
 
 class ZdfStartPageImageViewModel(private val repository: Repository = Repository) : ViewModel() {
     val images: LiveData<Repository.Resource<List<TeaserImage>>> = liveData {
-        emitSource(repository.getData().map {
+        emitSource(repository.getStartPageData().map {
             when (it) {
                 is Repository.Resource.Success -> Repository.Resource.Success(it.data?.stage?.mapNotNull { item ->
                     getImageForSize(
@@ -24,7 +24,7 @@ class ZdfStartPageImageViewModel(private val repository: Repository = Repository
     }
 
     fun refreshData() {
-        repository.refreshData()
+        repository.refreshStartPageData()
     }
 
     private fun getImageForSize(image: Map<Int, TeaserImage>): TeaserImage? {
