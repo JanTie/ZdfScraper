@@ -6,10 +6,9 @@ import digital.tiedemann.zdfmediathekscraper.service.model.StartPageResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-object Repository {
-
-    private val client by lazy { ZdfMediathekApi.create() }
+class Repository @Inject constructor(private val client: ZdfMediathekApi) {
 
     private val dataDelegate =
         lazy { MutableLiveData<Resource<StartPageResponse>>() }
